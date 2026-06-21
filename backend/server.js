@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://mongo:KODr1wuQksDIBzCIOpXgPgvMsGYhIhkI@reseau.proxy.rlwy.net:15373')
+mongoose.connect('mongodb://mongo:KODriwuQksDIBzCIOpXgPgvMsGYhIhkI@reseau.proxy.rlwy.net:15373')
   .then(() => console.log('MongoDB Connected!'))
   .catch(err => console.log(err));
 
