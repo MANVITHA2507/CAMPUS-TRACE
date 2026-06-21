@@ -8,7 +8,7 @@ function App() {
   });
 
   const fetchItems = async () => {
-    const res = await fetch("http://localhost:5000/items");
+    const res = await fetch("${import.meta.env.VITE_API_URL}/items");
     const data = await res.json();
     setItems(data);
   };
@@ -20,7 +20,7 @@ function App() {
       alert("Please fill title, location and contact!");
       return;
     }
-    await fetch("http://localhost:5000/items", {
+    await fetch("${import.meta.env.VITE_API_URL}/items", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form)
@@ -30,7 +30,7 @@ function App() {
   };
 
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:5000/items/${id}`, { method: "DELETE" });
+    await fetch(`${import.meta.env.VITE_API_URL}/items/${id}`, { method: "DELETE" });
     fetchItems();
   };
 
