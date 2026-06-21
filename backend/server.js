@@ -1,15 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongodb://mongo:KODriwuQksDIBzCIOpXgPgvMsGYhIhkI@reseau.proxy.rlwy.net:15373('mongodb://mongo:KODriwuQksDIBzCIOpXgPgvMsGYhIhkI@reseau.proxy.rlwy.net:15373')
-  .then(() => console.log('MongoDB Connected!'))
-  .catch(err => console.log(err));
+mongoose.connect('mongodb://mongo:KODr1wuQksDIBzCIOpXgPgvMsGYhIhkI@reseau.proxy.rlwy.net:15373')
+.then(() => console.log('MongoDB Connected!'))
+.catch(err => console.log(err));
 
 const itemSchema = new mongoose.Schema({
   title: String,
@@ -38,4 +37,4 @@ app.delete('/items/:id', async (req, res) => {
   res.json({ message: 'Deleted' });
 });
 
-app.listen(5000, () => console.log('Server running on port 5000'));
+app.listen(process.env.PORT || 5000, () => console.log('Server running on port 5000'));
