@@ -8,7 +8,7 @@ function App() {
   });
 
   const fetchItems = async () => {
-    const res = await fetch("${import.meta.env.VITE_API_URL}/items");
+    const res = await fetch("${https://campus-trace-production.up.railway.app}/items");
     const data = await res.json();
     setItems(data);
   };
@@ -20,7 +20,7 @@ function App() {
       alert("Please fill title, location and contact!");
       return;
     }
-    await fetch("${import.meta.env.VITE_API_URL}/items", {
+    await fetch("${https://campus-trace-production.up.railway.app}/items", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form)
@@ -30,7 +30,7 @@ function App() {
   };
 
   const handleDelete = async (id) => {
-    await fetch(`${import.meta.env.VITE_API_URL}/items/${id}`, { method: "DELETE" });
+    await fetch(`${https://campus-trace-production.up.railway.app}/items/${id}`, { method: "DELETE" });
     fetchItems();
   };
 
