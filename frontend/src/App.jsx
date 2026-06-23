@@ -8,7 +8,7 @@ function App() {
   });
 
   const fetchItems = async () => {
-    const res = await fetch("https://campus-trace-production.up.railway.app/items");
+    const res = await fetch("https://campus-trace-hgoa.onrender.com/items");
     const data = await res.json();
     setItems(data);
   };
@@ -20,7 +20,7 @@ function App() {
       alert("Please fill title, location and contact!");
       return;
     }
-    await fetch("https://campus-trace-production.up.railway.app/items", {
+    await fetch("https://campus-trace-hgoa.onrender.com/items", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form)
@@ -30,7 +30,7 @@ function App() {
   };
 
   const handleDelete = async (id) => {
-    await fetch(`https://campus-trace-production.up.railway.app/items/${id}`, { method: "DELETE" });
+    await fetch(`https://campus-trace-hgoa.onrender.com/items/${id}`, { method: "DELETE" });
     fetchItems();
   };
 

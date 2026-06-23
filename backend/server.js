@@ -1,14 +1,21 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");
 
 const app = express();
-app.use(cors());
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  if (req.method === 'OPTIONS') return res.sendStatus(200);
+  next();
+});
+
 app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI)
-.then(() => console.log("MongoDB Connected!"))
-.catch(err => console.log(err));
+  .then(() => console.log("MongoDB Connected!"))
+  .catch(err => console.log(err));
 
 const itemSchema = new mongoose.Schema({
   title: String,
